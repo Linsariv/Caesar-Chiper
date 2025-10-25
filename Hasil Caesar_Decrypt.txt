@@ -1,0 +1,8 @@
+==== Caesar Cipher Result ====
+Date: 2025-10-24 17:05
+Mode: DECRYPT
+Plaintext: Olqwdqj Vdul Luydqldwl
+Shift: 3
+Ciphertext: Lintang Sari Irvaniati
+Notes: Shift used = 3 (classic Caesar)
+=============================
