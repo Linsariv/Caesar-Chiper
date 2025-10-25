@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# caesar_cipher.py
-# Simple Caesar cipher tool
-# Supports: encrypt, decrypt (with key), and auto-decrypt (brute force)
-# Saves output to .txt in a neat formatted report
-
 import sys
 import string
 from datetime import datetime
@@ -37,7 +31,6 @@ def save_to_file(mode, plaintext, ciphertext, shift, default_name=None):
     header = "==== Caesar Cipher Result ===="
     footer = "=" * 29
 
-    # Prepare result text following user's format
     result_text = (
         f"{header}\n"
         f"Date: {timestamp}\n"
@@ -50,7 +43,6 @@ def save_to_file(mode, plaintext, ciphertext, shift, default_name=None):
     )
 
     if default_name is None:
-        # safer filename: include mode and date
         default_name = f"caesar_{mode.lower()}_{datetime.now().strftime('%Y%m%d_%H%M')}.txt"
 
     name = input(f"Simpan hasil ke file (tekan Enter untuk '{default_name}'): ").strip()
@@ -78,7 +70,7 @@ def encrypt_flow():
     cipher = caesar(plain, k)
     print("\nHasil enkripsi:")
     print(cipher)
-    # Save with plaintext and ciphertext clearly labeled
+    
     save_to_file(mode="ENCRYPT", plaintext=plain, ciphertext=cipher, shift=k)
     return
 
@@ -95,7 +87,7 @@ def decrypt_flow():
     print("\nHasil dekripsi:")
     print("Ciphertext:", cipher)
     print("Plaintext :", plain)
-    # For decrypt: plaintext is the decrypted result, ciphertext is the input cipher
+
     save_to_file(mode="DECRYPT", plaintext=cipher, ciphertext=plain, shift=k)
     return
 
@@ -116,10 +108,10 @@ def auto_decrypt_flow():
         try:
             k_choice = int(choice)
             if 0 <= k_choice < ALPH_LEN:
-                selected = dict(candidates)[k_choice]  # decrypted plaintext for that k
+                selected = dict(candidates)[k_choice] 
                 print("\nTeks terpilih:")
                 print(selected)
-                # For auto-decrypt, plaintext is selected (decrypted), ciphertext is original cipher
+                
                 save_to_file(mode=f"AUTO_DECRYPT", plaintext=selected, ciphertext=cipher, shift=k_choice)
                 return
         except ValueError:
@@ -152,3 +144,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
